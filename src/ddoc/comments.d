@@ -58,6 +58,23 @@ unittest
 	assert(test.sections[2].name == "Params");
 }
 
+unittest
+{
+	// parentheses used as key in the PARAMS section
+	// from std/regex/package.d
+	Comment test = parseComment(`
+    Compile regular expression pattern for the later execution.
+    Returns: $(D Regex) object that works on inputs having
+    the same character width as $(D pattern).
+
+    Params:
+    pattern(s) = Regular expression(s) to match
+    flags = The _attributes (g, i, m and x accepted)
+
+    Throws: $(D RegexException) if there were any errors during compilation.
+	`, null);
+}
+
 struct Comment
 {
 	bool isDitto() const @property

@@ -502,8 +502,11 @@ private bool parseAsKeyValuePair(ref Lexer olexer, ref string key, ref string va
 	}
 	else
 		return false;
-	while (!lexer.empty && lexer.front.type == Type.whitespace)
+
+	// parentheses might be used in the key
+	while (!lexer.empty && lexer.front.type.among(Type.whitespace, Type.lParen, Type.rParen, Type.word))
 		lexer.popFront();
+
 	if (!lexer.empty && lexer.front.type == Type.equals)
 		lexer.popFront();
 	else
