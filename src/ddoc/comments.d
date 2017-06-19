@@ -82,6 +82,19 @@ unittest
 		Section("Throws", " if there were any errors during compilation.", [])]));
 }
 
+unittest
+{
+
+	// code blocks can start with whitespace
+	// from std/math.d
+	Comment test = parseComment(`
+ Mathematically,
+ ---------------
+ asinh(x) =  log( x + sqrt( x*x + 1 )) // if x >= +0
+ -------------
+`, null);
+}
+
 struct Comment
 {
 	bool isDitto() const @property

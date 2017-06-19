@@ -113,12 +113,12 @@ Section[] splitSections(string text)
 
 	void finishSection()
 	{
-		import std.algorithm.searching : canFind, find;
+		import std.algorithm.searching : canFind, endsWith, find;
 		import std.range : dropBack, enumerate, retro;
 
 		auto text = lex.text[sliceStart .. sliceEnd];
 		// remove the next line from the current section (the last section doesn't have a following section)
-		if (text.canFind("\n") && sliceEnd != lex.text.length)
+		if (text.canFind("\n") && sliceEnd != lex.text.length && !text.endsWith("---"))
 			text = text.dropBack(text.retro.enumerate.find!(e => e.value == '\n').front.index);
 
 		if (!hasSummary)
