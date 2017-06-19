@@ -73,6 +73,13 @@ unittest
 
     Throws: $(D RegexException) if there were any errors during compilation.
 	`, null);
+	import std.typecons : Tuple;
+	assert(test == Comment([
+		Section("", "Compile regular expression pattern for the later execution.", []),
+		Section("", "", []),
+		Section("Returns", " object that works on inputs having\n    the same character width as .", []),
+		Section("Params", "pattern(s) = Regular expression(s) to match\n    flags = The _attributes (g, i, m and x accepted)", [Tuple!(string, string)("pattern", "Regular expression(s) to match"), Tuple!(string, string)("flags", "The _attributes (g, i, m and x accepted)")]),
+		Section("Throws", " if there were any errors during compilation.", [])]));
 }
 
 struct Comment
